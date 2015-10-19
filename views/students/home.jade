@@ -1,4 +1,22 @@
 extends ../layout
 
 block content
-  h1= title
+  .container
+    h1= title
+    p
+    a(href='/students/new') Add a Student
+    .row
+      .col-md-8
+        table.table.table-striped.table-bordered
+          thead
+            tr
+              th First Name
+              th Last Name
+              th Phone Number
+          tbody
+            for student in allStudents
+              tr
+                td
+                  a(href='/students/' + student._id)= student.firstname
+                td= student.lastname
+                td= student.phone
