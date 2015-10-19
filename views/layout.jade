@@ -2,6 +2,33 @@ doctype html
 html
   head
     title= title
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    if (!user)
+      nav.navbar.navbar-default.navbar-static-top
+        .container
+          ul.nav.navbar-nav.navbar-left
+            li
+              a(href='/') Student Site
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/users/register') Register
+            li
+              a(href='/users/login') Login
+    if (user)
+      nav.navbar.navbar-default.navbar-static-top
+        .container
+          ul.nav.navbar-nav.navbar-left
+            li
+              a(href='/students') Student List
+          ul.nav.navbar-nav.navbar-right
+            li
+              a= user
+            li
+              a(href='/users/logout') Logout
     block content
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+    script(src="/javascripts/scripts.js")
